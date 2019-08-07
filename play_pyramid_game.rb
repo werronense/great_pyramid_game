@@ -9,6 +9,7 @@ class Turn
 
   def initialize
     @@turn_number += 1
+    puts "Initial event" # test
   end
 
   def self.turn_count
