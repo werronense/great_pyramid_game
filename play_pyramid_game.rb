@@ -1,7 +1,10 @@
 # list the necessary classes
 class Game
   @@turn_number = 0
-  @@resources = {}
+  @@resources = {
+    food: 500 * rand(1..10),
+    manpower: 100 * rand(1..10)
+  }
   @@pyramid_status = 0.0
 
   def self.turn_count
@@ -23,9 +26,11 @@ class Turn < Game
   end
 
   def print_state
-    puts Game.turn_count
-    puts Game.get_resources
-    puts Game.get_pyramid_status
+    puts "Turn number #{Game.turn_count}"
+    resources = Game.get_resources
+    puts "Available food: #{resources[:food]}"
+    puts "Available manpower: #{resources[:manpower]}"
+    puts "Pyramid status: #{Game.get_pyramid_status * 100} percent built"
   end
 end
 
