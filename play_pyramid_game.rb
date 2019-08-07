@@ -15,20 +15,11 @@ class Turn
     @@turn_number
   end
 
-  def self.get_resources
-    @@resources
-  end
-
-  def self.get_pyramid_status
-    @@pyramid_status
-  end
-
   def print_state
-    puts "Turn number #{Turn.turn_count}"
-    resources = Turn.get_resources
-    puts "Available food: #{resources[:food]}"
-    puts "Available manpower: #{resources[:manpower]}"
-    puts "Pyramid status: #{Turn.get_pyramid_status * 100} percent built"
+    puts "Turn number #{@@turn_number}"
+    puts "Available food: #{@@resources[:food]}"
+    puts "Available manpower: #{@@resources[:manpower]}"
+    puts "Pyramid status: #{@@pyramid_status * 100} percent built"
   end
 end
 
