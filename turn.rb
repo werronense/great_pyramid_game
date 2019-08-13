@@ -4,7 +4,7 @@ class Turn
   @@state = {
     turn_number: 0,
     food: 500 * rand(1..10),
-    manpower: 100 * rand(5..10),
+    manpower: 100 * rand(7..10),
     pyramid_status: 0.0
   }
 
@@ -51,6 +51,12 @@ class Turn
   end
 
   def end_turn
+    # add completed percentage to pyramid_status
+    # use 7000 workers for 10 years estimate from Teotihuacan great pyramid
+    # divide manpower by 7000.0 (float to avoid rounding to 0)
+    new_pyramid = @@state[:pyramid_status] + @@state[:manpower] / 7000.0
+    @@state[:pyramid_status] = new_pyramid.truncate(2)
+
     # population growth at rate of 1 to 2.5 %
     new_manpower = @@state[:manpower] * (1 + rand(0.01..0.025))
     @@state[:manpower] = new_manpower.to_i
